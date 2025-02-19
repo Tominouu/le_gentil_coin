@@ -1,0 +1,27 @@
+<div id="<%= dom_id offer %>">
+  <p>
+    <strong>Name:</strong>
+    <%= offer.name %>
+  </p>
+
+  <p>
+    <strong>Image:</strong>
+    <%= image_tag offer.image, size:"400x300" %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= offer.description %>
+  </p>
+
+  <p>
+    <strong>Price:</strong>
+    <%= offer.price %>
+  </p>
+
+  <p>
+    <strong>User:</strong>
+    <%= link_to offer.user %>
+  </p>
+
+</div>
