@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_19_103955) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_19_141939) do
   create_table "offers", force: :cascade do |t|
     t.string "name"
     t.string "image"
@@ -22,6 +22,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_103955) do
     t.index ["user_id"], name: "index_offers_on_user_id"
   end
 
+  create_table "offers_users", force: :cascade do |t|
+    t.integer "offer_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_offers_users_on_offer_id"
+    t.index ["user_id"], name: "index_offers_users_on_user_id"
+  end
+
+  create_table "table_offers_users", force: :cascade do |t|
+    t.integer "offer_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offer_id"], name: "index_table_offers_users_on_offer_id"
+    t.index ["user_id"], name: "index_table_offers_users_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "pseudonym"
     t.string "photo"
@@ -30,4 +48,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_19_103955) do
   end
 
   add_foreign_key "offers", "users"
+  add_foreign_key "offers_users", "offers"
+  add_foreign_key "offers_users", "users"
+  add_foreign_key "table_offers_users", "offers"
+  add_foreign_key "table_offers_users", "users"
 end
